@@ -13,5 +13,5 @@
     ]
   },
   "error": "ModuleBuildError",
-  "message": "Module build failed: SyntaxError: missing super() call in constructor\n\n   8 | \n   9 | class Marquee extends React.Component { \n> 10 |   constructor () {\n     |   ^\n  11 |     \n  12 |   }\n  13 | \n"
+  "message": "Module build failed: SyntaxError: Unexpected token, expected } (114:29)\n\n  112 |         onMouseEnter={handleMouseEnter}\n  113 |         onMouseLeave={handleMouseLeave}\n> 114 |         ref={this.measureText)}\n      |                              ^\n  115 |       >\n  116 |         <span style={style}>{this.props.children}</span>\n  117 |       </div>\n"
 }

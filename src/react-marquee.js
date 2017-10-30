@@ -1,36 +1,28 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 const FPS = 20;
 const STEP = 1;
 const TIMEOUT = 1 / FPS * 1000;
 
-const Marquee = React.createClass({
-  propTypes: {
-    text: PropTypes.string,
-    hoverToStop: PropTypes.bool,
-    loop: PropTypes.bool,
-    leading: PropTypes.number,
-    trailing: PropTypes.number,
-    className: PropTypes.string
-  },
-
-  getDefaultProps() {
-    return {
-      text: '',
-      hoverToStop: false,
-      loop: false,
-      leading: 0,
-      trailing: 0
-    };
-  },
-
-  getInitialState() {
-    return {
+class Marquee extends React.Component { 
+  constructor () {
+    super ();
+    
+    this.state = {
       animatedWidth: 0,
       overflowWidth: 0
-    };
-  },
+    }
+  }
+
+  static defaultProps = {
+    text: '',
+    hoverToStop: false,
+    loop: true,
+    leading: 0,
+    trailing: 0
+  }
 
   componentDidMount() {
     this._measureText();
@@ -38,7 +30,7 @@ const Marquee = React.createClass({
     if (this.props.hoverToStop) {
       this._startAnimation();
     }
-  },
+  }
 
   componentDidUpdate() {
     this._measureText();
@@ -46,21 +38,20 @@ const Marquee = React.createClass({
     if (this.props.hoverToStop) {
       this._startAnimation();
     }
-  },
+  }
 
   componentWillUnmount() {
     clearTimeout(this._marqueeTimer);
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
-          if(this.props.text.length != nextProps.text.length)
-          {
-              clearTimeout(this._marqueeTimer);
-              this.setState({
-                animatedWidth: 0
-              });
-          }
-  },
+    if (this.props.text.length != nextProps.text.length) {
+        clearTimeout(this._marqueeTimer);
+        this.setState({
+          animatedWidth: 0
+        });
+    }
+  }
 
   handleMouseEnter() {
     if (this.props.hoverToStop) {
@@ -69,7 +60,7 @@ const Marquee = React.createClass({
     else if (this.state.overflowWidth > 0){
       this._startAnimation();
     }
-  },
+  }
 
   handleMouseLeave() {
     if (this.props.hoverToStop && this.state.overflowWidth > 0) {
@@ -81,9 +72,9 @@ const Marquee = React.createClass({
         animatedWidth: 0
       });
     }
-  },
+  }
 
-  render() {
+  render () {
     const style = {
       'position': 'relative',
       'right': this.state.animatedWidth,
@@ -106,7 +97,7 @@ const Marquee = React.createClass({
         </div>
       );
     }
-  },
+  }
 
   _startAnimation() {
     clearTimeout(this._marqueeTimer);
@@ -146,7 +137,7 @@ const Marquee = React.createClass({
     };
 
     this._marqueeTimer = setTimeout(animate, timeout);
-  },
+  }
 
   _measureText() {
     const container = ReactDOM.findDOMNode(this);
@@ -164,6 +155,6 @@ const Marquee = React.createClass({
       }
     }
   }
-});
+}
 
-module.exports = Marquee;
+export default Marquee

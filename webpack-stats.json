@@ -1,0 +1,17 @@
+{
+  "status": "done",
+  "chunks": {
+    "main": [
+      {
+        "name": "bundle.js",
+        "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-marquee/test/dist/bundle.js"
+      },
+      {
+        "name": "bundle.js.map",
+        "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-marquee/test/dist/bundle.js.map"
+      }
+    ]
+  },
+  "error": "ModuleBuildError",
+  "message": "Module build failed: SyntaxError: missing super() call in constructor\n\n   8 | \n   9 | class Marquee extends React.Component { \n> 10 |   constructor () {\n     |   ^\n  11 |     \n  12 |   }\n  13 | \n"
+}

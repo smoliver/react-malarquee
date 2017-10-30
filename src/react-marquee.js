@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-const FPS = 20;
-const STEP = 1;
-const TIMEOUT = 1 / FPS * 1000;
 
 const defaultProps = {
   hoverToPause: false,
@@ -45,13 +42,12 @@ class Marquee extends React.Component {
     this.stopAnimation();
   }
 
-
   pauseOnEnter() {
-    clearTimeout(this._marqueeTimer);
+    this.stopAnimation();
   }
 
   resumeOnLeave() {
-    this._startAnimation()
+    this.startAnimation()
   }
 
   animate() {
@@ -68,12 +64,13 @@ class Marquee extends React.Component {
   }
 
   startAnimation() {
-    console.log ('startAnimation');
+    if (this.frameId) return
     this.frameId = window.requestAnimationFrame (this.animate);
   }
 
   stopAnimation() {
-    clearTimeout(this.frameId);
+    window.cancelAnimationFrame(this.frameId);
+    this.frameId = null;
   }
 
   measureText(container) {
@@ -94,7 +91,8 @@ class Marquee extends React.Component {
   }
 
   render() {
-    const { hoverToPause, offset } = this.state;
+    const { hoverToPause } = this.props;
+    const { offset } = this.state;
     
     const style = {
       'position': 'relative',

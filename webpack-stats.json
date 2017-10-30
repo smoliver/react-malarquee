@@ -11,7 +11,5 @@
         "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-marquee/test/dist/bundle.js.map"
       }
     ]
-  },
-  "error": "ModuleBuildError",
-  "message": "Module build failed: SyntaxError: Unexpected token, expected } (114:29)\n\n  112 |         onMouseEnter={handleMouseEnter}\n  113 |         onMouseLeave={handleMouseLeave}\n> 114 |         ref={this.measureText)}\n      |                              ^\n  115 |       >\n  116 |         <span style={style}>{this.props.children}</span>\n  117 |       </div>\n"
+  }
 }

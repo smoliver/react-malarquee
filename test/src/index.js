@@ -7,8 +7,14 @@ const TestMarquee = () => (
   <main>
     <h1>Test Marquee</h1>
     <div>
-      <Marquee hoverToPause={true}>
-        this is some text for testing asdlfjasdlf asdkfjaskfd jasdkfjk akdsjfk aajksdj fjdjs akjsjd fjsa fj kajsdkf jakjkjasdkf jaksdjfkjaksdjf 
+      <Marquee hoverToPause fill>
+        <span style={{padding: '10px'}}> this is some text </span>
+      </Marquee>
+      <Marquee hoverToPause>
+        <span style={{padding: '10px'}}> this is some text </span>
+      </Marquee>
+      <Marquee hoverToPause>
+        this is some text
       </Marquee>
     </div>
   </main>

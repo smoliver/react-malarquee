@@ -1,11 +1,12 @@
 {
-  "name": "react-marquee",
-  "version": "0.1.1",
-  "description": "A <marquee> component for React",
+  "name": "react-malarquee",
+  "version": "0.0.1",
+  "description": "A more flexible <Marquee> component for React",
   "main": "lib/index.js",
   "scripts": {
     "test": "webpack-dev-server --config webpack.test.config.js --content-base test/dist",
-    "build": "webpack --optimize-minimize"
+    "build": "webpack",
+    "build-min": "webpack --optimize-minimize"
   },
   "repository": {
     "type": "git",
@@ -14,9 +15,13 @@
   "keywords": [
     "react",
     "marquee",
-    "component"
+    "component",
+    "malarquee",
+    "animation",
+    "scroll",
+    "images"
   ],
-  "author": "jasonslyvia <jasonslyvia@gmail.com> (http://undefinedblog.com/)",
+  "author": "Sam Grad Oliver samo@shaper.cc ",
   "license": "MIT",
   "devDependencies": {
     "ajv": "^5.2.2",

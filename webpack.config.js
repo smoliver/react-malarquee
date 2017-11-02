@@ -17,9 +17,27 @@ module.exports = {
     library: 'ReactMalarquee'
   },
   externals : {
-    'react': 'React',
-    'react-dom': 'ReactDom',
-    'prop-types': 'PropTypes'
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+      umd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+      umd: 'react-dom',
+    },
+    'prop-types': {
+      root: 'PropTypes',
+      commonjs2: 'prop-types',
+      commonjs: 'prop-types',
+      amd: 'prop-types',
+      umd: 'prop-types',
+    },
   },
   plugins: [
     new webpack.DefinePlugin({

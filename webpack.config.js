@@ -8,7 +8,8 @@ module.exports = {
     modules :[
       path.resolve('./src'),
       path.resolve('./node_modules')
-    ]
+    ],
+    extensions: ['.js', '.jsx', '.json']
   },
   output: {
     path: __dirname + '/lib',
@@ -23,7 +24,7 @@ module.exports = {
   ],
   module: {
     rules: [{
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: path.resolve('./node_modules'),
         use: [{
             loader: 'babel-loader',

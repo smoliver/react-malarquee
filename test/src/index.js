@@ -8,7 +8,9 @@ const TestMarquee = () => (
     <h1>Test Marquee</h1>
     <div>
       <Marquee hoverToPause fill>
-        <span style={{padding: '10px'}}> this is some text </span>
+        <span 
+          style={{padding: '10px', background: 'blue'}}
+        > this is some text </span>
       </Marquee>
       <Marquee hoverToPause>
         <span style={{padding: '10px'}}> this is some text </span>

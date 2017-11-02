@@ -11,7 +11,5 @@
         "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-malarquee/test/dist/bundle.js.map"
       }
     ]
-  },
-  "error": "ModuleBuildError",
-  "message": "Module build failed: Error: ENOENT: no such file or directory, open '/Users/SamO/projects/2018_spring/hackathon-project/react-malarquee/src/react-marquee.js'"
+  }
 }

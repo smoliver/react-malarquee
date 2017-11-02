@@ -8,11 +8,12 @@ module.exports = {
   context: __dirname + '/test/src',
   entry: ['babel-polyfill', './index.js'],
   resolve: {
-    modules :[
+    modules: [
       path.resolve('./test/src'),
       path.resolve('./src'),
       path.resolve('./node_modules')
-    ]
+    ],
+    extensions: ['.js', '.jsx', '.json']
   },
   output: {
     path: __dirname + '/test/dist',
@@ -24,7 +25,7 @@ module.exports = {
   devtool: "#source-map",
   module: {
     rules: [{
-      test: /\.js$/,
+      test: /\.(js|jsx)$/,
       exclude: path.resolve('./node_modules'),
       use: [{
         loader: 'babel-loader',

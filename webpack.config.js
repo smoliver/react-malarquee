@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   context: __dirname + '/src',
-  entry: ['babel-polyfill', './react-marquee.js'],
+  entry: ['babel-polyfill', './marquee.js'],
   resolve: {
     modules :[
       path.resolve('./src'),

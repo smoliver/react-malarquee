@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Marquee from 'react-marquee'
+import Marquee from 'marquee'
 
 const TestMarquee = () => (
   <main>

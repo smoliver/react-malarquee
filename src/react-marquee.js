@@ -5,9 +5,14 @@ import PropTypes from 'prop-types';
 
 const defaultProps = {
   hoverToPause: false,
-  loop: true,
-  leading: 0,
-  trailing: 0
+  fill: true,
+  rate: 100
+}
+
+
+const containerStyle = {
+  overflow: 'hidden',
+  whiteSpace: 'nowrap'
 }
 
 class Marquee extends React.Component { 
@@ -50,23 +55,31 @@ class Marquee extends React.Component {
     this.startAnimation()
   }
 
-  animate() {
-    let offset = this.state.offset - 1
+  animate(lastStamp, curStamp) {
+    const timeDif = (curStamp - lastStamp) / 1000;
+    let offset = this.state.offset - this.props.rate * timeDif;
     if (-offset >= this.contentWidth) {
-      if (this.props.fill) offset = 0;
-      else offset = this.containerWidth;
+      console.log (offset % this.contentWidth);
+      if (this.props.fill) offset = offset % this.contentWidth;
+      else offset = this.containerWidth + (offset % this.contentWidth);
     }
     this.setState({
       offset: offset
     })
 
     // Make recursive call to animate to continue animation
-    this.frameId = window.requestAnimationFrame (this.animate);
+    this.frameId = window.requestAnimationFrame (
+      this.animate.bind (this, curStamp)
+    );
   }
 
   startAnimation() {
     if (this.frameId) return
-    this.frameId = window.requestAnimationFrame (this.animate);
+    this.frameId = window.requestAnimationFrame ((timeStamp) => {
+      this.frameId = window.requestAnimationFrame (
+        this.animate.bind (this, timeStamp)
+      );
+    }); 
   }
 
   stopAnimation() {
@@ -104,8 +117,8 @@ class Marquee extends React.Component {
     let contentCoppies = []
     for (let i = 0; i < coppies; ++i) {
       const style = {
-        'position': 'relative',
-        'left': offset,
+        'display': 'inline-block',
+        'transform': `translateX(${offset}px)`,
         'whiteSpace': 'nowrap'
       };
       contentCoppies.push (
@@ -122,8 +135,6 @@ class Marquee extends React.Component {
 
   render() {
     const { hoverToPause } = this.props;
-    
-    console.log ("RENDER", this.state.coppies);
 
     const handleMouseEnter = hoverToPause ? this.pauseOnEnter : null;
     const handleMouseLeave = hoverToPause ? this.resumeOnLeave.bind (this) : null;
@@ -131,7 +142,7 @@ class Marquee extends React.Component {
     return (
       <div 
         className={`${this.props.className}`} 
-        style={{overflow: 'hidden'}}
+        style={containerStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         ref={this.measureContent}

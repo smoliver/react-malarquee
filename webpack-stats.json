@@ -4,14 +4,12 @@
     "main": [
       {
         "name": "bundle.js",
-        "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-marquee/test/dist/bundle.js"
+        "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-malarquee/test/dist/bundle.js"
       },
       {
         "name": "bundle.js.map",
-        "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-marquee/test/dist/bundle.js.map"
+        "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-malarquee/test/dist/bundle.js.map"
       }
     ]
-  },
-  "error": "ModuleBuildError",
-  "message": "Module build failed: SyntaxError: Unexpected token, expected jsxTagEnd (12:6)\n\n  10 |       <Marquee hoverToPause fill>\n  11 |         <span style={{padding: '10px'}}> this is some text </span\n> 12 |       </Marquee>\n     |       ^\n  13 |     </div>\n  14 |   </main>\n  15 | )\n"
+  }
 }

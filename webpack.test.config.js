@@ -6,7 +6,7 @@ process.traceDeprecation = true;
 
 module.exports = {
   context: __dirname + '/test/src',
-  entry: ['babel-polyfill', './index.js'],
+  entry: './index.js',
   resolve: {
     modules: [
       path.resolve('./test/src'),

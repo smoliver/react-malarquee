@@ -13,7 +13,13 @@ module.exports = {
   },
   output: {
     path: __dirname + '/lib',
-    filename: 'index.js'
+    filename: 'react-malarquee.js',
+    library: 'ReactMalarquee'
+  },
+  externals : {
+    'react': 'React',
+    'react-dom': 'ReactDom',
+    'prop-types': 'PropTypes'
   },
   plugins: [
     new webpack.DefinePlugin({

@@ -2,11 +2,10 @@
   "name": "react-malarquee",
   "version": "0.0.5",
   "description": "A more flexible <Marquee> component for React",
-  "main": "lib/index.js",
+  "main": "lib/react-malarquee.js",
   "scripts": {
     "test": "webpack-dev-server --config webpack.test.config.js --content-base test/dist",
-    "build": "webpack",
-    "build-min": "webpack --optimize-minimize"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

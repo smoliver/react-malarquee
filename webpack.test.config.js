@@ -11,7 +11,8 @@ module.exports = {
     modules: [
       path.resolve('./test/src'),
       path.resolve('./src'),
-      path.resolve('./node_modules')
+      path.resolve('./node_modules'),
+      path.resolve('.')
     ],
     extensions: ['.js', '.jsx', '.json']
   },

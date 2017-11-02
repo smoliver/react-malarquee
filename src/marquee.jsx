@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 
+console.log (React)
+console.log (ReactDOM)
+console.log (PropTypes)
+
 const defaultProps = {
   hoverToPause: false,
   fill: true,

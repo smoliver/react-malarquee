@@ -15,7 +15,8 @@ module.exports = {
     path: __dirname + '/lib',
     filename: 'react-malarquee.js',
     library: 'ReactMalarquee',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   externals : {
     react: {

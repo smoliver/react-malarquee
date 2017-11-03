@@ -2,11 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-
-console.log (React)
-console.log (ReactDOM)
-console.log (PropTypes)
-
 const defaultProps = {
   hoverToPause: false,
   fill: true,
@@ -63,7 +58,6 @@ class Marquee extends React.Component {
     const timeDif = (curStamp - lastStamp) / 1000;
     let offset = this.state.offset - this.props.rate * timeDif;
     if (-offset >= this.contentWidth) {
-      console.log (offset % this.contentWidth);
       if (this.props.fill) offset = offset % this.contentWidth;
       else offset = this.containerWidth + (offset % this.contentWidth);
     }
@@ -93,8 +87,6 @@ class Marquee extends React.Component {
 
   measureContent(container) {
     if (!container) return
-
-    console.log ('measureText');
     
     let content = container.firstChild
 

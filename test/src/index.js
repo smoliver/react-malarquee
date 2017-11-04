@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom'
 
 import Marquee from 'src/marquee'
 
-console.log (Marquee);
-
 const TestMarquee = () => (
   <main>
     <h1>Test Marquee</h1>
     <div>
-      <Marquee hoverToPause fill>
+      <Marquee hoverToPause fill rate={1000} className={'name'} style={{background: 'green'}}>
         <span 
           style={{padding: '10px', background: 'blue'}}
         > this is some text </span>

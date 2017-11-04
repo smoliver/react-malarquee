@@ -8,7 +8,6 @@ const defaultProps = {
   rate: 100
 }
 
-
 const containerStyle = {
   overflow: 'hidden',
   whiteSpace: 'nowrap'
@@ -31,7 +30,9 @@ class Marquee extends React.Component {
     this.animate = this.animate.bind (this);
     this.startAnimation = this.startAnimation.bind (this);
     this.stopAnimation = this.stopAnimation.bind (this);
+    this.setupContentMeasuring = this.setupContentMeasuring.bind (this);
     this.measureContent = this.measureContent.bind (this);
+    this.forceUpdate = this.forceUpdate.bind (this);
   }
 
   componentDidMount() {
@@ -44,6 +45,7 @@ class Marquee extends React.Component {
 
   componentWillUnmount() {
     this.stopAnimation();
+    window.removeEventListener ('resize', this.measurementCallback);
   }
 
   pauseOnEnter() {
@@ -85,9 +87,15 @@ class Marquee extends React.Component {
     this.frameId = null;
   }
 
+  setupContentMeasuring(container) {
+    if (container === null) return;
+
+    this.measureContent(container);
+    this.measurementCallback = this.measureContent.bind(this, container);
+    window.addEventListener('resize', this.measurementCallback)
+  }
+
   measureContent(container) {
-    if (!container) return
-    
     let content = container.firstChild
 
     const containerWidth = container.offsetWidth;
@@ -130,18 +138,26 @@ class Marquee extends React.Component {
   }
 
   render() {
-    const { hoverToPause } = this.props;
+    const { 
+      hoverToPause,
+      fill,
+      rate, 
+      className = '',
+      style = {},
+      ...props 
+    } = this.props;
 
     const handleMouseEnter = hoverToPause ? this.pauseOnEnter : null;
     const handleMouseLeave = hoverToPause ? this.resumeOnLeave.bind (this) : null;
 
     return (
       <div 
-        className={`${this.props.className}`} 
-        style={containerStyle}
+        className={`${className}`} 
+        style={{...containerStyle, ...style}}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        ref={this.measureContent}
+        ref={this.setupContentMeasuring}
+        {...props}
       >
         {this.content(this.state)}
       </div>

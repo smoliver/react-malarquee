@@ -1,6 +1,6 @@
 {
   "name": "react-malarquee",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A more flexible <Marquee> component for React",
   "main": "lib/react-malarquee.js",
   "scripts": {

@@ -5,7 +5,9 @@
   "main": "lib/react-malarquee.js",
   "scripts": {
     "test": "webpack-dev-server --config webpack.test.config.js --content-base test/dist",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "eslint .",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "repository": {
     "type": "git",
@@ -34,10 +36,21 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.25.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-mocha": "^4.12.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^3.0.1",
     "file-loader": "^1.1.5",
     "http-server": "^0.10.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
+    "prettier": "^1.11.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

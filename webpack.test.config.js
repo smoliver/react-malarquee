@@ -1,11 +1,10 @@
-var webpack = require('webpack');
-var path = require('path');
-var BundleTracker = require('webpack-bundle-tracker');
+var path = require('path')
+var BundleTracker = require('webpack-bundle-tracker')
 
-process.traceDeprecation = true;
+process.traceDeprecation = true
 
 module.exports = {
-  context: __dirname + '/test/src',
+  context: path.join(__dirname, '/test/src'),
   entry: './index.js',
   resolve: {
     modules: [
@@ -17,56 +16,64 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json']
   },
   output: {
-    path: __dirname + '/test/dist',
+    path: path.join(__dirname, '/test/dist'),
     filename: 'bundle.js'
   },
-  plugins: [
-    new BundleTracker ({ filename: './webpack-stats.json', indent: 2 })
-  ],
-  devtool: "#source-map",
+  plugins: [new BundleTracker({ filename: './webpack-stats.json', indent: 2 })],
+  devtool: '#source-map',
   module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      exclude: path.resolve('./node_modules'),
-      use: [{
-        loader: 'babel-loader',
-        options: {
-          presets: ['env', 'react', 'stage-0'],
-          plugins: ['transform-object-assign']
-        }
-      }]
-    }, {
-      test: /\.(png|jpg|svg)$/,
-      use: [{
-        loader: 'file-loader',
-        options: {
-          name: 'images/[name].[ext]'
-        }
-      }]
-    }, {
-      test: /\.(ttf|otf|eot|woff|woff2)$/,
-      use: [{
-        loader: 'file-loader',
-        options: {
-          name: 'fonts/[name].[ext]'
-        }
-      }]
-    }, {
-      test: /\.scss$/,
-      use: [
-        "style-loader", 
-        { 
-          loader: "css-loader",
-          options: {
-            importLoaders: 2,
-            modules: true,
-            localIdentName: '[path]--[local]'
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: path.resolve('./node_modules'),
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['env', 'react', 'stage-0'],
+              plugins: ['transform-object-assign']
+            }
           }
-        }, 
-        "postcss-loader",
-        "sass-loader"
-      ]
-    }]
+        ]
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(ttf|otf|eot|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              modules: true,
+              localIdentName: '[path]--[local]'
+            }
+          },
+          'postcss-loader',
+          'sass-loader'
+        ]
+      }
+    ]
   }
 }
-

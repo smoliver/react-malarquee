@@ -11,5 +11,7 @@
         "path": "/Users/SamO/projects/2018_spring/hackathon-project/react-malarquee/test/dist/bundle.js.map"
       }
     ]
-  }
+  },
+  "error": "ModuleBuildError",
+  "message": "Module build failed: SyntaxError: Expected corresponding JSX closing tag for <Marquee> (43:8)\n\n  41 |           <Marquee hoverToPause>this is some text</Marquee>\n  42 |           <Marquee hoverToPause>\n> 43 |         </div>\n     |         ^\n  44 |       </main>\n  45 |     )\n  46 |   }\n"
 }

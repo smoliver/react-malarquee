@@ -8,15 +8,22 @@ const defaultProps = {
   rate: 100
 }
 
+const propTypes = {
+  hoverToPause: PropTypes.bool,
+  fill: PropTypes.bool,
+  rate: PropTypes.number,
+  children: PropTypes.node
+}
+
 const containerStyle = {
   overflow: 'hidden',
   whiteSpace: 'nowrap'
 }
 
-class Marquee extends React.Component { 
+class Marquee extends React.Component {
   constructor (props) {
     super (props);
-    
+
     this.state = {
       offset: 0,
       coppies: props.fill ? 2 : 1
@@ -79,7 +86,7 @@ class Marquee extends React.Component {
       this.frameId = window.requestAnimationFrame (
         this.animate.bind (this, timeStamp)
       );
-    }); 
+    });
   }
 
   stopAnimation() {
@@ -92,7 +99,7 @@ class Marquee extends React.Component {
 
     this.measureContent(container);
     this.measurementCallback = this.measureContent.bind(this, container);
-    window.addEventListener('resize', this.measurementCallback)
+    window.addEventListener('resize', this.measurementCallback);
   }
 
   measureContent(container) {
@@ -109,7 +116,7 @@ class Marquee extends React.Component {
         const coppies = Math.ceil (containerWidth / contentWidth) + 1;
 
         if (coppies === this.state.coppies) return;
-        
+
         this.setState ({
           coppies: coppies
         })
@@ -126,7 +133,7 @@ class Marquee extends React.Component {
         'whiteSpace': 'nowrap'
       };
       contentCoppies.push (
-        <span 
+        <span
           style={style}
           key={i}
         >
@@ -137,22 +144,26 @@ class Marquee extends React.Component {
     return contentCoppies;
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    this.measurementCallback()
+  }
+
   render() {
-    const { 
+    const {
       hoverToPause,
       fill,
-      rate, 
+      rate,
       className = '',
       style = {},
-      ...props 
+      ...props
     } = this.props;
 
     const handleMouseEnter = hoverToPause ? this.pauseOnEnter : null;
     const handleMouseLeave = hoverToPause ? this.resumeOnLeave.bind (this) : null;
 
     return (
-      <div 
-        className={`${className}`} 
+      <div
+        className={`${className}`}
         style={{...containerStyle, ...style}}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -166,5 +177,6 @@ class Marquee extends React.Component {
 }
 
 Marquee.defaultProps = defaultProps;
+
 
 export default Marquee
